@@ -1,0 +1,45 @@
+﻿<Window xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  
+        xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/pivotgrid"  
+        x:Class="exWpfPivotRunningTotals.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Running Totals" Height="500" Width="800" 
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+        xmlns:my="clr-namespace:exWpfPivotRunningTotals.Data.nwindDataSetTableAdapters" 
+        xmlns:my1="clr-namespace:exWpfPivotRunningTotals.Data">
+    <Window.Resources>
+        <dx:TypedSimpleSource x:Key="TypedSimpleSource" AdapterType="my:SalesPersonTableAdapter" 
+                              ContextType="my1:nwindDataSet" Path="SalesPerson">
+            <dx:DesignDataManager.DesignData>
+                <dx:DesignDataSettings RowCount="5" />
+            </dx:DesignDataManager.DesignData>
+        </dx:TypedSimpleSource>
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <StackPanel x:Name="stackPanel">
+                <dxe:CheckEdit x:Name="ceRunningTotals" IsChecked="False" Content="Enable Running Totals" 
+                               ToolTip="Include previous quarter sales into the values of the next quarter." 
+                               Margin="5,0" EditValueChanged="ceRunningTotals_EditValueChanged"/>
+                <dxe:CheckEdit x:Name="ceAllowCrossGroupRunningTotals" IsChecked="False" 
+                               Content="Allow Cross-Group Variation" 
+                               ToolTip="Allow cross-group running totals accumulation." 
+                               Margin="5,0,5,5" EditValueChanged="ceAllowCrossGroupRunningTotals_EditValueChanged" />
+            </StackPanel>
+            <dxpg:PivotGridControl x:Name="pivot" Margin="0,50,0,0" 
+                                   DataSource="{Binding Path=Data, Source={StaticResource TypedSimpleSource}}">
+                <dxpg:PivotGridControl.Fields>
+                    <dxpg:PivotGridField Area="ColumnArea" x:Name="fieldOrderYear" Caption="Year" 
+                                         FieldName="OrderDate" AreaIndex="0" GroupInterval="DateYear"/>
+                    <dxpg:PivotGridField Area="ColumnArea" x:Name="fieldOrderQuarter" Caption="Quarter" 
+                                         FieldName="OrderDate" AreaIndex="1" GroupInterval="DateQuarter" 
+                                         ValueFormat="Qtr {0}"/>
+                    <dxpg:PivotGridField Area="RowArea" x:Name="fieldProduct" Caption="Product" 
+                                         FieldName="ProductName" AreaIndex="1"/>
+                    <dxpg:PivotGridField Area="DataArea" x:Name="fieldProductSales" Caption="Product Sales" 
+                                         FieldName="Extended Price" AreaIndex="0"/>
+                </dxpg:PivotGridControl.Fields>
+            </dxpg:PivotGridControl>
+        </Grid>
+    </Grid>
+</Window>
