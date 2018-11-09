@@ -1,4 +1,4 @@
-﻿<Window xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  
+<Window xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  
         xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/pivotgrid"  
         x:Class="exWpfPivotRunningTotals.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
