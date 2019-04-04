@@ -1,7 +1,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [MainWindow.xaml](./CS/exWpfPivotRunningTotals/MainWindow.xaml) (VB: [MainWindow.xaml.vb](./VB/exWpfPivotRunningTotals/MainWindow.xaml.vb))
+* [MainWindow.xaml](./CS/exWpfPivotRunningTotals/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/exWpfPivotRunningTotals/MainWindow.xaml))
 * [MainWindow.xaml.cs](./CS/exWpfPivotRunningTotals/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/exWpfPivotRunningTotals/MainWindow.xaml.vb))
 <!-- default file list end -->
 # How to calculate cumulative values in the Pivot Grid control
